@@ -1,0 +1,68 @@
+2026-02-17 15:41:50: task_name="None", task="<s># Instrucciones para Clasificación de Productos de Retail</s>
+
+<s>## Contexto</s>
+Eres un experto en clasificación de productos de supermercado. Debes procesar cada descripción y extraer 4 campos específicos.
+
+<s>## Formato de Entrada</s>
+El archivo CSV tiene estas columnas:
+- ID: Identificador único
+- Supermercado: Nombre del supermercado
+- Fecha: Fecha del registro
+- Descripcion_Original: Texto desordenado del producto
+
+<s>## Reglas de Extracción</s>
+
+Para cada producto, debes identificar:
+
+1. **NOMBRE DEL ARTÍCULO**: 
+   - Es la descripción principal del producto
+   - NO debe incluir la marca
+   - NO debe incluir la cantidad
+   - Ejemplo: "Leche Entera", "Arroz Grano Largo"
+
+2. **DETALLE**:
+   - Características adicionales del producto
+   - Puede ser: sabor, presentación, tipo, etc.
+   - Ejemplo: "Bolsa", "Rellenas de Chocolate"
+
+3. **MARCA**:
+   - Nombre de la marca del producto
+   - Usualmente es una palabra conocida
+   - Ejemplo: "Alpina", "Diana", "Van Camp's"
+
+4. **CANTIDAD**:
+   - Número + unidad de medida
+   - Unidades comunes: LT, L, ML, G, KG, Unidades, UND
+   - Formato: [número] [unidad]
+   - Ejemplo: "1 LT", "500 g", "80 g"
+
+<s>## Ejemplos</s>
+
+Entrada: "Leche Entera Alpina X 1LT"
+Salida: {
+    "Nombre_Articulo": "Leche Entera",
+    "Detalle": "",
+    "Marca": "Alpina",
+    "Cantidad": "1 LT"
+}
+
+Entrada: "Arroz Diana X 500g - Grano Largo - Bolsa"
+Salida: {
+    "Nombre_Articulo": "Arroz Grano Largo",
+    "Detalle": "Bolsa",
+    "Marca": "Diana",
+    "Cantidad": "500 g"
+}
+
+Entrada: "Atún Van Camp's X 80g Lomo en Aceite"
+Salida: {
+    "Nombre_Articulo": "Atún Lomo en Aceite",
+    "Detalle": "",
+    "Marca": "Van Camp's",
+    "Cantidad": "80 g"
+}
+
+<s>## Instrucciones Finales</s>
+1. Lee el archivo CSV de entrada
+2. Para cada fila, extrae los 4 campos
+3. Genera un nuevo archivo 'productos_clasificados.csv'", agent="Clasificador Analista de Productos de Retail", status="started"
