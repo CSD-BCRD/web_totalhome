@@ -37,9 +37,7 @@ async def clasificar_producto_async(client: AsyncClient, Articulo: str) -> dict:
         except Exception as e:
             return {"nombre_articulo": "ERROR", "detalle": str(e), "marca": "ERROR", "cantidad": "", "status": "FAIL"}
 
-async def main_async():
-    archivo_entrada = "df/categoria_IBERIA.csv"
-    archivo_salida = "df/categoria_IBERIA_clasificada.csv"
+async def main_async(archivo_entrada = "df/categoria_IBERIA.csv", archivo_salida = "df/categoria_IBERIA_clasificada.csv"):       
     
     df_original = pd.read_csv(archivo_entrada)
     
@@ -90,4 +88,4 @@ async def procesar_y_formatear(client, row):
     }
 
 if __name__ == "__main__":
-    asyncio.run(main_async())
+    asyncio.run(main_async(archivo_entrada = "medallion_SM/pricesmart/bronze/categoria_pricesmart.csv", archivo_salida = "medallion_SM/pricesmart/silver/categoria_pricesmart_clasificada.csv"))

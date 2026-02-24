@@ -45,12 +45,17 @@ def fusionador(bd_full: str = "df/IBERIA.csv",
     
     print(df_right.head())
     
-    df_fusionada = df_left.merge(df_right, how="left", on="Articulo", indicator=True )
+    df_fusionada = df_left.merge(df_right, how="left", on="Articulo", indicator=False)
     
-    #df_fusionada.to_csv("df/prueba.csv")
+    df_fusionada.to_parquet(archivo_salida, index=False)
     
     print(df_fusionada.head(n=50))
     
+    print(f"El archivo clasificado fue guardado exitosamente en la ruta: {archivo_salida}")
+    
 
 if __name__ == "__main__":
-    fusionador()
+    
+    fusionador(bd_full = "medallion_SM/garrido/raw/Supermercado_Garrido.csv", 
+               clasificador = "medallion_SM/garrido/silver/categoria_garrido_clasificada.csv", 
+               archivo_salida = "medallion_SM/garrido/gold/bd_garrido_full_clasificada.parquet")
