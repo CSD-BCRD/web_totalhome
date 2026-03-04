@@ -56,6 +56,6 @@ def fusionador(bd_full: str = "df/IBERIA.csv",
 
 if __name__ == "__main__":
     
-    fusionador(bd_full = "medallion_SM/garrido/raw/Supermercado_Garrido.csv", 
-               clasificador = "medallion_SM/garrido/silver/categoria_garrido_clasificada.csv", 
-               archivo_salida = "medallion_SM/garrido/gold/bd_garrido_full_clasificada.parquet")
+    fusionador(bd_full = "medallion_SM/pricesmart/raw/PriceSmart.csv", 
+               clasificador = "medallion_SM/pricesmart/silver/categoria_pricesmart_clasificada.csv", 
+               archivo_salida = "medallion_SM/pricesmart/gold/bd_pricesmart_full_clasificada.parquet")
