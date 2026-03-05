@@ -1,0 +1,985 @@
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Total Home Care Solution | Complete Residential Solutions</title>
+    <!-- Google Fonts for typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Custom Tailwind Config for Brand Colors -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                gold: "#C59A3F",
+                goldLight: "#DCB55B",
+                green: "#145C29",
+                greenDark: "#0D401C",
+                magenta: "#D01C60",
+                magentaHover: "#E7236D",
+              },
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              serif: ["Playfair Display", "serif"],
+            },
+            animation: {
+              "fade-in-up": "fadeInUp 0.8s ease-out forwards",
+              "ping-slow": "ping 3s cubic-bezier(0, 0, 0.2, 1) infinite",
+            },
+            keyframes: {
+              fadeInUp: {
+                "0%": { opacity: "0", transform: "translateY(20px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .glass-effect {
+          @apply bg-white/90 backdrop-blur-md border border-white/20 shadow-lg;
+        }
+        .text-outline-gold {
+          text-shadow:
+            1px 1px 0 #c59a3f,
+            -1px -1px 0 #c59a3f,
+            1px -1px 0 #c59a3f,
+            -1px 1px 0 #c59a3f;
+        }
+      }
+
+      .en-content {
+        display: none;
+      }
+      .es-content {
+        display: inline-block;
+      }
+      .es-content-block {
+        display: block;
+      }
+
+      html[lang="en"] .en-content {
+        display: inline-block;
+      }
+      html[lang="en"] .en-content-block {
+        display: block;
+      }
+      html[lang="en"] .es-content {
+        display: none;
+      }
+      html[lang="en"] .es-content-block {
+        display: none;
+      }
+
+      .hero-pattern {
+        background-image:
+          linear-gradient(rgba(20, 92, 41, 0.85), rgba(13, 64, 28, 0.95)),
+          url("https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2000&auto=format&fit=crop");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+
+      .service-card {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow:
+          0 20px 25px -5px rgba(20, 92, 41, 0.1),
+          0 10px 10px -5px rgba(20, 92, 41, 0.04);
+      }
+      .service-icon-wrapper {
+        transition: all 0.3s ease;
+      }
+      .service-card:hover .service-icon-wrapper {
+        background-color: #d01c60;
+        color: white;
+        transform: scale(1.1) rotate(5deg);
+      }
+      .carousel-container {
+        overflow: hidden;
+        position: relative;
+      }
+      .carousel-track {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+      }
+      .carousel-slide {
+        min-width: 100%;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body
+    class="font-sans text-gray-800 antialiased overflow-x-hidden bg-gray-50 selection:bg-brand-gold selection:text-white"
+  >
+    <!-- Header Navigation -->
+    <header
+      class="fixed w-full top-0 z-50 transition-all duration-300"
+      id="main-header"
+    >
+      <div
+        class="absolute inset-0 bg-white shadow-md transition-opacity duration-300"
+        id="header-bg"
+        style="opacity: 0.98"
+      ></div>
+      <div class="container mx-auto px-4 lg:px-8 relative">
+        <div class="flex items-center justify-between h-20">
+          <!-- Logo -->
+          <div
+            class="flex-shrink-0 flex items-center group cursor-pointer"
+            onclick="window.scrollTo(0, 0)"
+          >
+            <div
+              class="relative w-12 h-12 bg-white rounded-full flex items-center justify-center overflow-hidden border-2 border-brand-gold shadow-sm group-hover:shadow-md transition-all duration-300"
+            >
+              <img src="images/logo2.png" alt="Total Home Care Solution Logo" class="w-full h-full object-contain p-1 group-hover:scale-110 transition-transform duration-300">
+            </div>
+            <div class="ml-3 flex flex-col">
+              <span
+                class="font-serif font-bold text-xl leading-none text-brand-gold tracking-wide"
+                >TOTAL HOME CARE</span
+              >
+              <span
+                class="text-[0.65rem] font-bold text-brand-magenta tracking-[0.2em] mt-0.5"
+                >SOLUTION</span
+              >
+            </div>
+          </div>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden md:flex space-x-8 items-center">
+            <a
+              href="#services"
+              class="text-sm font-semibold text-brand-greenDark hover:text-brand-magenta transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-magenta after:transition-all hover:after:w-full py-2"
+            >
+              <span class="es-content">Servicios</span>
+              <span class="en-content">Services</span>
+            </a>
+            <a
+              href="#about"
+              class="text-sm font-semibold text-brand-greenDark hover:text-brand-magenta transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-magenta after:transition-all hover:after:w-full py-2"
+            >
+              <span class="es-content">Nosotros</span>
+              <span class="en-content">About Us</span>
+            </a>
+            <a
+              href="#portfolio"
+              class="text-sm font-semibold text-brand-greenDark hover:text-brand-magenta transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-magenta after:transition-all hover:after:w-full py-2"
+            >
+              <span class="es-content">Portafolio</span>
+              <span class="en-content">Portfolio</span>
+            </a>
+            <a
+              href="#contact"
+              class="text-sm font-semibold text-brand-greenDark hover:text-brand-magenta transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-magenta after:transition-all hover:after:w-full py-2"
+            >
+              <span class="es-content">Contacto</span>
+              <span class="en-content">Contact</span>
+            </a>
+
+            <!-- Language Toggle -->
+            <button
+              id="lang-toggle-btn"
+              class="ml-4 flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-brand-greenDark px-4 py-2 rounded-full font-medium text-sm transition-colors border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-gold group"
+            >
+              <i
+                class="fa-solid fa-language text-brand-magenta group-hover:scale-110 transition-transform"
+              ></i>
+              <span class="es-content">English</span>
+              <span class="en-content text-brand-gold font-bold"
+                >Hablamos Español</span
+              >
+            </button>
+
+            <a
+              href="#contact"
+              class="ml-2 bg-brand-gold hover:bg-brand-goldLight text-white px-5 py-2.5 rounded-full font-semibold text-sm transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            >
+              <span class="es-content">Cotizar Ahora</span>
+              <span class="en-content">Get a Quote</span>
+            </a>
+          </nav>
+
+          <!-- Mobile menu button -->
+          <div class="md:hidden flex items-center gap-4">
+            <!-- Mobile Lang Toggle -->
+            <button
+              id="mobile-lang-toggle"
+              class="text-brand-magenta font-bold text-xs uppercase bg-white border border-gray-200 px-2.5 py-1.5 rounded-md shadow-sm"
+            >
+              <span class="es-content">EN</span>
+              <span class="en-content">ES</span>
+            </button>
+
+            <button
+              id="mobile-menu-btn"
+              class="text-brand-greenDark hover:text-brand-magenta focus:outline-none p-2"
+            >
+              <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu (Hidden by default) -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl overflow-hidden transition-all duration-300 max-h-0"
+      >
+        <div class="px-4 pt-2 pb-6 space-y-1">
+          <a
+            href="#services"
+            class="mobile-link block px-3 py-4 text-base font-medium text-gray-800 hover:text-brand-magenta hover:bg-gray-50 rounded-md border-b border-gray-50"
+          >
+            <span class="es-content">Servicios</span
+            ><span class="en-content">Services</span>
+          </a>
+          <a
+            href="#about"
+            class="mobile-link block px-3 py-4 text-base font-medium text-gray-800 hover:text-brand-magenta hover:bg-gray-50 rounded-md border-b border-gray-50"
+          >
+            <span class="es-content">Nosotros</span
+            ><span class="en-content">About Us</span>
+          </a>
+          <a
+            href="#portfolio"
+            class="mobile-link block px-3 py-4 text-base font-medium text-gray-800 hover:text-brand-magenta hover:bg-gray-50 rounded-md border-b border-gray-50"
+          >
+            <span class="es-content">Portafolio</span
+            ><span class="en-content">Portfolio</span>
+          </a>
+          <a
+            href="#contact"
+            class="mobile-link block px-3 py-4 text-base font-medium text-gray-800 hover:text-brand-magenta hover:bg-gray-50 rounded-md border-b border-gray-50"
+          >
+            <span class="es-content">Contacto</span
+            ><span class="en-content">Contact</span>
+          </a>
+          <div class="mt-6 px-3">
+            <a
+              href="#contact"
+              class="mobile-link w-full flex items-center justify-center bg-brand-gold text-white px-4 py-3 rounded-md font-bold text-base shadow-md"
+            >
+              <span class="es-content">Solicitar Presupuesto</span
+              ><span class="en-content">Request Estimate</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 hero-pattern flex items-center min-h-[90vh]"
+    >
+      <!-- Decorative shapes overlay -->
+      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div
+          class="absolute -top-[20%] -right-[10%] w-[50%] h-[70%] bg-brand-gold/10 blur-[120px] rounded-full"
+        ></div>
+        <div
+          class="absolute top-[40%] -left-[10%] w-[40%] h-[60%] bg-brand-magenta/10 blur-[100px] rounded-full"
+        ></div>
+      </div>
+
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-3xl text-center mx-auto opacity-0 animate-fade-in-up">
+          <div
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium mb-8"
+          >
+            <span
+              class="w-2 h-2 rounded-full bg-brand-gold animate-pulse"
+            ></span>
+            <span class="es-content"
+              >Soluciones Residenciales de Excelencia</span
+            >
+            <span class="en-content">Premium Residential Solutions</span>
+          </div>
+
+          <h1
+            class="text-4xl md:text-5xl md:leading-tight lg:text-6xl font-serif font-bold text-white mb-6 drop-shadow-lg"
+          >
+            <span class="block">
+              <span class="es-content">Transformamos</span>
+              <span class="en-content">Transforming</span>
+            </span>
+            <span class="text-brand-gold inline-block mt-2">
+              <span class="es-content">Tus Espacios</span>
+              <span class="en-content">Your Spaces</span>
+            </span>
+            <span class="block">
+              <span class="es-content">en Hogares Soñados</span>
+              <span class="en-content">Into Dream Homes</span>
+            </span>
+          </h1>
+
+          <p
+            class="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-light leading-relaxed"
+          >
+            <span class="es-content"
+              >Remodelación, mantenimiento y cuidado total para tu propiedad.
+              Calidad garantizada en cada detalle por nuestro equipo de
+              expertos.</span
+            >
+            <span class="en-content"
+              >Remodeling, maintenance, and total care for your property.
+              Guaranteed quality in every detail by our expert team.</span
+            >
+          </p>
+
+          <div
+            class="flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <a
+              href="#services"
+              class="w-full sm:w-auto px-8 py-4 bg-brand-gold hover:bg-brand-goldLight text-white rounded-full font-bold text-lg transition-all shadow-[0_0_20px_rgba(197,154,63,0.4)] hover:shadow-[0_0_30px_rgba(197,154,63,0.6)] hover:-translate-y-1"
+            >
+              <span class="es-content">Nuestros Servicios</span>
+              <span class="en-content">Our Services</span>
+            </a>
+            <a
+              href="#contact"
+              class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 rounded-full font-bold text-lg transition-all hover:-translate-y-1"
+            >
+              <span class="es-content">Contáctanos</span>
+              <span class="en-content">Contact Us</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div
+        class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce text-white/70"
+      >
+        <span class="text-xs tracking-widest uppercase mb-2"
+          ><span class="es-content">Descubre</span
+          ><span class="en-content">Discover</span></span
+        >
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white relative">
+      <div class="container mx-auto px-4 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <h4
+            class="text-brand-magenta font-bold tracking-wider uppercase text-sm mb-2"
+          >
+            <span class="es-content">Zonas de Especialidad</span>
+            <span class="en-content">Areas of Expertise</span>
+          </h4>
+          <h2
+            class="text-3xl md:text-4xl font-serif font-bold text-brand-greenDark mb-4"
+          >
+            <span class="es-content">Servicios Completos para tu Hogar</span>
+            <span class="en-content">Complete Solutions for Your Home</span>
+          </h2>
+          <div class="w-24 h-1 bg-brand-gold mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Service 1 -->
+          <div
+            class="service-card bg-white rounded-2xl p-8 border border-gray-100 relative overflow-hidden group"
+          >
+            <div
+              class="absolute top-0 right-0 w-32 h-32 bg-brand-green/5 rounded-bl-full -z-10 transition-transform group-hover:scale-110"
+            ></div>
+
+            <div
+              class="service-icon-wrapper w-16 h-16 rounded-xl bg-brand-green/10 text-brand-green flex items-center justify-center text-2xl mb-6 shadow-sm"
+            >
+              <i class="fa-solid fa-paint-roller"></i>
+            </div>
+
+            <h3 class="text-xl font-bold text-gray-900 mb-3 font-serif">
+              <span class="es-content">Pintura y Acabados</span>
+              <span class="en-content">Painting & Finishes</span>
+            </h3>
+
+            <p class="text-gray-600 mb-6 line-clamp-3">
+              <span class="es-content"
+                >Renovamos la apariencia de tu hogar con los mejores materiales.
+                Pintura interior, exterior y texturizados de alta calidad.</span
+              >
+              <span class="en-content"
+                >We renew your home's appearance with the best materials.
+                High-quality interior, exterior painting, and texturing.</span
+              >
+            </p>
+
+            <a
+              href="#contact"
+              class="inline-flex items-center text-brand-gold font-semibold group-hover:text-brand-magenta transition-colors"
+            >
+              <span class="es-content">Cotizar</span>
+              <span class="en-content">Get Quote</span>
+              <i
+                class="fa-solid fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"
+              ></i>
+            </a>
+          </div>
+
+          <!-- Service 2 -->
+          <div
+            class="service-card bg-white rounded-2xl p-8 border border-gray-100 relative overflow-hidden group"
+          >
+            <div
+              class="absolute top-0 right-0 w-32 h-32 bg-brand-gold/10 rounded-bl-full -z-10 transition-transform group-hover:scale-110"
+            ></div>
+
+            <div
+              class="service-icon-wrapper w-16 h-16 rounded-xl bg-brand-gold/20 text-brand-gold flex items-center justify-center text-2xl mb-6 shadow-sm"
+            >
+              <i class="fa-solid fa-hammer"></i>
+            </div>
+
+            <h3 class="text-xl font-bold text-gray-900 mb-3 font-serif">
+              <span class="es-content">Remodelación General</span>
+              <span class="en-content">General Remodeling</span>
+            </h3>
+
+            <p class="text-gray-600 mb-6 line-clamp-3">
+              <span class="es-content"
+                >Transformación completa de espacios. Baños, cocinas y
+                ampliaciones diseñadas para maximizar funcionalidad y
+                estética.</span
+              >
+              <span class="en-content"
+                >Complete transformation of spaces. Bathrooms, kitchens, and
+                extensions designed to maximize functionality and
+                aesthetics.</span
+              >
+            </p>
+
+            <a
+              href="#contact"
+              class="inline-flex items-center text-brand-gold font-semibold group-hover:text-brand-magenta transition-colors"
+            >
+              <span class="es-content">Cotizar</span>
+              <span class="en-content">Get Quote</span>
+              <i
+                class="fa-solid fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"
+              ></i>
+            </a>
+          </div>
+
+          <!-- Service 3 -->
+          <div
+            class="service-card bg-white rounded-2xl p-8 border border-gray-100 relative overflow-hidden group"
+          >
+            <div
+              class="absolute top-0 right-0 w-32 h-32 bg-brand-magenta/5 rounded-bl-full -z-10 transition-transform group-hover:scale-110"
+            ></div>
+
+            <div
+              class="service-icon-wrapper w-16 h-16 rounded-xl bg-brand-magenta/10 text-brand-magenta flex items-center justify-center text-2xl mb-6 shadow-sm"
+            >
+              <i class="fa-solid fa-leaf"></i>
+            </div>
+
+            <h3 class="text-xl font-bold text-gray-900 mb-3 font-serif">
+              <span class="es-content">Jardinería y Exteriores</span>
+              <span class="en-content">Landscaping & Outdoors</span>
+            </h3>
+
+            <p class="text-gray-600 mb-6 line-clamp-3">
+              <span class="es-content"
+                >Diseño y mantenimiento de áreas verdes. Creamos oasis de
+                tranquilidad para disfrutar al aire libre en tu propia
+                casa.</span
+              >
+              <span class="en-content"
+                >Design and maintenance of green areas. We create tranquility
+                oasis to enjoy outdoors right in your home.</span
+              >
+            </p>
+
+            <a
+              href="#contact"
+              class="inline-flex items-center text-brand-gold font-semibold group-hover:text-brand-magenta transition-colors"
+            >
+              <span class="es-content">Cotizar</span>
+              <span class="en-content">Get Quote</span>
+              <i
+                class="fa-solid fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"
+              ></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visual Divider -->
+    <div
+      class="w-full h-3 bg-gradient-to-r from-brand-green via-brand-gold to-brand-magenta"
+    ></div>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-gray-50 relative">
+      <div class="container mx-auto px-4 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <h4
+            class="text-brand-magenta font-bold tracking-wider uppercase text-sm mb-2"
+          >
+            <span class="es-content">Nuestro Trabajo</span>
+            <span class="en-content">Our Work</span>
+          </h4>
+          <h2
+            class="text-3xl md:text-4xl font-serif font-bold text-brand-greenDark mb-4"
+          >
+            <span class="es-content">Proyectos Recientes (Antes y Después)</span>
+            <span class="en-content">Recent Projects (Before & After)</span>
+          </h2>
+          <div class="w-24 h-1 bg-brand-gold mx-auto rounded-full"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto carousel-container rounded-2xl shadow-xl bg-white border border-gray-100">
+          <div id="carousel-track" class="carousel-track">
+            <!-- Slide 1 -->
+            <div class="carousel-slide flex flex-col md:flex-row">
+              <div class="w-full md:w-1/2 relative group">
+                <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=800&auto=format&fit=crop" class="w-full h-80 object-cover" alt="Before">
+                <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-bold shadow"><span class="es-content">Antes</span><span class="en-content">Before</span></div>
+              </div>
+              <div class="w-full md:w-1/2 relative group">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop" class="w-full h-80 object-cover" alt="After">
+                <div class="absolute top-4 left-4 bg-brand-gold/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-bold shadow"><span class="es-content">Después</span><span class="en-content">After</span></div>
+              </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="carousel-slide flex flex-col md:flex-row">
+              <div class="w-full md:w-1/2 relative group">
+                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop" class="w-full h-80 object-cover" alt="Before">
+                <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-bold shadow"><span class="es-content">Antes</span><span class="en-content">Before</span></div>
+              </div>
+              <div class="w-full md:w-1/2 relative group">
+                <img src="https://images.unsplash.com/photo-1584622781564-1d987f7333c1?q=80&w=800&auto=format&fit=crop" class="w-full h-80 object-cover" alt="After">
+                <div class="absolute top-4 left-4 bg-brand-gold/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-bold shadow"><span class="es-content">Después</span><span class="en-content">After</span></div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Controls -->
+          <button id="carousel-prev" class="absolute top-1/2 left-4 md:left-8 transform -translate-y-1/2 w-12 h-12 bg-white/80 hover:bg-brand-magenta text-brand-greenDark hover:text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10 focus:outline-none">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button id="carousel-next" class="absolute top-1/2 right-4 md:right-8 transform -translate-y-1/2 w-12 h-12 bg-white/80 hover:bg-brand-magenta text-brand-greenDark hover:text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10 focus:outline-none">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visual Divider -->
+    <div
+      class="w-full h-3 bg-gradient-to-r from-brand-green via-brand-gold to-brand-magenta"
+    ></div>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white overflow-hidden">
+      <div class="container mx-auto px-4 lg:px-8">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+          <!-- Images Col -->
+          <div class="w-full lg:w-1/2 relative">
+            <!-- Decor -->
+            <div
+              class="absolute -top-6 -left-6 w-32 h-32 bg-brand-gold/20 rounded-full blur-2xl"
+            ></div>
+            <div
+              class="absolute -bottom-6 -right-6 w-40 h-40 bg-brand-magenta/20 rounded-full blur-2xl"
+            ></div>
+
+            <div
+              class="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3] group"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1541888086425-d81bb19240f5?q=80&w=1400&auto=format&fit=crop"
+                alt="Construction & Remodeling"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+
+              <!-- Floating Badge -->
+              <div
+                class="absolute bottom-6 left-6 glass-effect rounded-xl p-4 flex items-center gap-4 animate-bounce"
+                style="animation-duration: 4s"
+              >
+                <div
+                  class="w-12 h-12 bg-brand-green rounded-full flex items-center justify-center text-white text-xl font-bold"
+                >
+                  10+
+                </div>
+                <div class="leading-tight">
+                  <span class="block font-bold text-gray-900">
+                    <span class="es-content">Años Experiencia</span>
+                    <span class="en-content">Years Experience</span>
+                  </span>
+                  <span class="text-sm text-gray-600">
+                    <span class="es-content">Calidad Asegurada</span>
+                    <span class="en-content">Assured Quality</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Text Col -->
+          <div class="w-full lg:w-1/2">
+            <h4
+              class="text-brand-gold font-bold tracking-wider uppercase text-sm mb-2 flex items-center gap-2"
+            >
+              <span class="w-8 h-[2px] bg-brand-gold inline-block"></span>
+              <span class="es-content">Sobre Nosotros</span>
+              <span class="en-content">About Us</span>
+            </h4>
+            <h2
+              class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-6 leading-tight"
+            >
+              <span class="es-content"
+                >Comprometidos con la
+                <span class="text-brand-green">Perfección</span> en Cada
+                Detalle</span
+              >
+              <span class="en-content"
+                >Committed to
+                <span class="text-brand-green">Perfection</span> in Every
+                Detail</span
+              >
+            </h2>
+            <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+              <span class="es-content"
+                >En <strong>Total Home Care Solution</strong>, entendemos que tu
+                hogar es tu refugio. Por más de una década hemos brindado
+                soluciones residenciales integrales, combinando técnica experta
+                con materiales premium.</span
+              >
+              <span class="en-content"
+                >At <strong>Total Home Care Solution</strong>, we understand
+                your home is your sanctuary. For over a decade we have provided
+                comprehensive residential solutions, combining expert technique
+                with premium materials.</span
+              >
+            </p>
+
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-start">
+                <span
+                  class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-magenta/10 text-brand-magenta flex items-center justify-center mt-1 mr-3"
+                >
+                  <i class="fa-solid fa-check text-xs"></i>
+                </span>
+                <span class="text-gray-700 font-medium">
+                  <span class="es-content-block"
+                    >Atención personalizada y presupuestos transparentes</span
+                  >
+                  <span class="en-content-block"
+                    >Personalized attention and transparent pricing</span
+                  >
+                </span>
+              </li>
+              <li class="flex items-start">
+                <span
+                  class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-magenta/10 text-brand-magenta flex items-center justify-center mt-1 mr-3"
+                >
+                  <i class="fa-solid fa-check text-xs"></i>
+                </span>
+                <span class="text-gray-700 font-medium">
+                  <span class="es-content-block"
+                    >Equipo altamente cualificado en múltiples disciplinas</span
+                  >
+                  <span class="en-content-block"
+                    >Highly qualified multi-disciplinary team</span
+                  >
+                </span>
+              </li>
+              <li class="flex items-start">
+                <span
+                  class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-magenta/10 text-brand-magenta flex items-center justify-center mt-1 mr-3"
+                >
+                  <i class="fa-solid fa-check text-xs"></i>
+                </span>
+                <span class="text-gray-700 font-medium">
+                  <span class="es-content-block"
+                    >Garantía de satisfacción en todos nuestros trabajos</span
+                  >
+                  <span class="en-content-block"
+                    >Satisfaction guarantee on all our work</span
+                  >
+                </span>
+              </li>
+            </ul>
+
+            <a
+              href="#contact"
+              class="inline-flex items-center justify-center px-8 py-4 border-2 border-brand-green text-brand-green hover:bg-brand-green hover:text-white rounded-full font-bold text-lg transition-all"
+            >
+              <span class="es-content">Hablemos de tu Proyecto</span>
+              <span class="en-content">Let's Discuss Your Project</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Connect / CTA Section -->
+    <section class="py-24 bg-brand-greenDark relative overflow-hidden">
+      <div
+        class="absolute top-0 right-0 w-64 h-64 bg-brand-gold rounded-full filter blur-[100px] opacity-30"
+      ></div>
+      <div
+        class="absolute bottom-0 left-0 w-64 h-64 bg-brand-magenta rounded-full filter blur-[100px] opacity-30"
+      ></div>
+
+      <div class="container mx-auto px-4 relative z-10 text-center">
+        <h2 class="text-3xl md:text-5xl font-serif font-bold text-white mb-6">
+          <span class="es-content">¿Listo para mejorar tu hogar?</span>
+          <span class="en-content">Ready to improve your home?</span>
+        </h2>
+        <p
+          class="text-xl text-brand-goldLight mb-10 max-w-2xl mx-auto font-light"
+        >
+          <span class="es-content"
+            >No importa el tamaño del proyecto, estamos aquí para hacerlo
+            realidad con calidad insuperable.</span
+          >
+          <span class="en-content"
+            >No matter the project size, we are here to make it reality with
+            unsurpassed quality.</span
+          >
+        </p>
+        <a
+          href="tel:+1234567890"
+          class="inline-flex items-center gap-3 bg-brand-magenta hover:bg-brand-magentaHover text-white px-10 py-5 rounded-full font-bold text-xl transition-all hover:scale-105 shadow-[0_10px_30px_rgba(208,28,96,0.4)]"
+        >
+          <i class="fa-solid fa-phone"></i>
+          <span class="es-content">Llamar Ahora</span>
+          <span class="en-content">Call Now</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 text-gray-300 pt-16 pb-8">
+      <div class="container mx-auto px-4 lg:px-8">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12"
+        >
+          <!-- Brand Col -->
+          <div class="lg:col-span-1">
+            <div class="flex items-center mb-6">
+              <div
+                class="w-10 h-10 bg-white rounded-full flex items-center justify-center overflow-hidden border border-brand-gold mr-3"
+              >
+                <img src="images/logo.png" alt="Total Home Care Solution Logo" class="w-full h-full object-contain p-1">
+              </div>
+              <div class="flex flex-col">
+                <span
+                  class="font-serif font-bold text-lg leading-none text-brand-gold"
+                  >TOTAL HOME CARE</span
+                >
+                <span
+                  class="text-[0.6rem] font-bold text-brand-magenta tracking-[0.2em] mt-0.5"
+                  >SOLUTION</span
+                >
+              </div>
+            </div>
+            <p class="text-gray-400 text-sm mb-6">
+              <span class="es-content"
+                >Soluciones profesionales en remodelación, pintura y
+                mantenimiento para que disfrutes de tu hogar al máximo.</span
+              >
+              <span class="en-content"
+                >Professional remodeling, painting, and maintenance solutions so
+                you can enjoy your home to the fullest.</span
+              >
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-brand-magenta hover:text-white transition-colors"
+              >
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-brand-magenta hover:text-white transition-colors"
+              >
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-brand-magenta hover:text-white transition-colors"
+              >
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Links Col -->
+          <div>
+            <h4 class="text-white font-bold text-lg mb-6 font-serif">
+              <span class="es-content">Enlaces Rápidos</span>
+              <span class="en-content">Quick Links</span>
+            </h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-brand-gold transition-colors inline-flex items-center gap-2"
+                  ><i
+                    class="fa-solid fa-angle-right text-xs text-brand-magenta"
+                  ></i>
+                  <span class="es-content">Inicio</span
+                  ><span class="en-content">Home</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="hover:text-brand-gold transition-colors inline-flex items-center gap-2"
+                  ><i
+                    class="fa-solid fa-angle-right text-xs text-brand-magenta"
+                  ></i>
+                  <span class="es-content">Servicios</span
+                  ><span class="en-content">Services</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="hover:text-brand-gold transition-colors inline-flex items-center gap-2"
+                  ><i
+                    class="fa-solid fa-angle-right text-xs text-brand-magenta"
+                  ></i>
+                  <span class="es-content">Sobre Nosotros</span
+                  ><span class="en-content">About Us</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="#portfolio"
+                  class="hover:text-brand-gold transition-colors inline-flex items-center gap-2"
+                  ><i
+                    class="fa-solid fa-angle-right text-xs text-brand-magenta"
+                  ></i>
+                  <span class="es-content">Portafolio</span
+                  ><span class="en-content">Portfolio</span></a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact Col -->
+          <div class="lg:col-span-2">
+            <h4 class="text-white font-bold text-lg mb-6 font-serif">
+              <span class="es-content">Contáctanos</span>
+              <span class="en-content">Contact Us</span>
+            </h4>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div
+                  class="w-10 h-10 rounded-full bg-brand-green/20 text-brand-green flex items-center justify-center mt-1 flex-shrink-0 mr-4"
+                >
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                  <h5 class="text-white font-medium mb-1">
+                    <span class="es-content">Ubicación</span
+                    ><span class="en-content">Location</span>
+                  </h5>
+                  <p class="text-gray-400 text-sm">
+                    123 Renovation Ave, Builder City, ST 12345
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div
+                  class="w-10 h-10 rounded-full bg-brand-magenta/20 text-brand-magenta flex items-center justify-center mt-1 flex-shrink-0 mr-4"
+                >
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div>
+                  <h5 class="text-white font-medium mb-1">
+                    <span class="es-content">Correo</span
+                    ><span class="en-content">Email</span>
+                  </h5>
+                  <a
+                    href="mailto:info@totalhomecare.com"
+                    class="text-gray-400 text-sm hover:text-brand-gold"
+                    >info@totalhomecare.com</a
+                  >
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div
+                  class="w-10 h-10 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center mt-1 flex-shrink-0 mr-4"
+                >
+                  <i class="fa-solid fa-phone-volume"></i>
+                </div>
+                <div>
+                  <h5 class="text-white font-medium mb-1">
+                    <span class="es-content">Teléfono</span
+                    ><span class="en-content">Phone</span>
+                  </h5>
+                  <a
+                    href="tel:+123456789"
+                    class="text-gray-400 text-sm hover:text-brand-gold"
+                    >+1 (234) 567-890</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-800 pt-8 mt-4 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500"
+        >
+          <p>
+            &copy; <span id="year"></span> Total Home Care Solution.
+            <span class="es-content">Todos los derechos reservados.</span>
+            <span class="en-content">All rights reserved.</span>
+          </p>
+          <div class="mt-4 md:mt-0 flex space-x-4">
+            <a href="#" class="hover:text-white transition-colors"
+              ><span class="es-content">Privacidad</span
+              ><span class="en-content">Privacy Policy</span></a
+            >
+            <a href="#" class="hover:text-white transition-colors"
+              ><span class="es-content">Términos</span
+              ><span class="en-content">Terms of Service</span></a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script src="scripts/main.js"></script>
+  </body>
+</html>
