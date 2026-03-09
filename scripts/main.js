@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Language Toggle Logic
   const langToggleBtn = document.getElementById("lang-toggle-btn");
   const mobileLangToggle = document.getElementById("mobile-lang-toggle");
-  let currentLang = "es"; // Default is Spanish based on instructions
+  let currentLang = "en"; // Default is English based on instructions
 
   function setLanguage(lang) {
     currentLang = lang;
