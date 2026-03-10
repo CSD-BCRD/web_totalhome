@@ -2,28 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Set current year in footer
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  // Language Toggle Logic
-  const langToggleBtn = document.getElementById("lang-toggle-btn");
-  const mobileLangToggle = document.getElementById("mobile-lang-toggle");
-  let currentLang = "en"; // Default is English based on instructions
-
-  function setLanguage(lang) {
-    currentLang = lang;
-    document.documentElement.lang = lang;
-  }
-
-  // The button toggles between the state. If it says "Hablamos Español", clicking means switching to ES (if in EN), but actually the button serves to switch to the OTHER language.
-  // Since default is ES, it shows "English" text. When EN, it shows "Hablamos Español".
-  const handleLangToggle = () => {
-    const newLang = currentLang === "en" ? "es" : "en";
-    setLanguage(newLang);
-  };
-
-  langToggleBtn.addEventListener("click", handleLangToggle);
-  mobileLangToggle.addEventListener("click", handleLangToggle);
-
-  // Set initial language explicitly
-  setLanguage(currentLang);
 
   // Mobile Menu Toggle
   const mobileMenuBtn = document.getElementById("mobile-menu-btn");
